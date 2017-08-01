@@ -10,6 +10,9 @@
 		Added threading to take user input and exit program with user input of 'exit'.
 		Added serial write on all other inputs than CMD 'exit'.
 		Added check to see if file exists before overwriting.
+
+	1.3 - created 8-1-17 - By Shawn McCombs
+		Fixed-Forgot to close the write during the header output
 '''
 
 import sys
@@ -50,9 +53,9 @@ else:
 	append_write = 'w'
 
 DataLog = open(FileName, append_write)
-
 print ("DateTime:\t\tUnit:\tStatus:\tCount:\tSensor:\t")
 DataLog.write("DateTime:\t\tUnit:\tStatus:\tCount:\tSensor:\t\r\n")
+DataLog.close()
 
 threading1 = threading.Thread(target=background)
 threading1.daemon = True
